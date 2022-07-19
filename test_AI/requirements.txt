@@ -16,6 +16,7 @@ six==1.16.0
 sqlparse==0.4.2
 tzdata==2022.1
 
+# cmake도 깔았슴다... pip install cmake
 pandas
 # --find-links https://download.pytorch.org/whl/torch_stable.html
 # torch==1.8.0+cu111 
