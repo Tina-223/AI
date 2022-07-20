@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import ai
 
 doc = """
@@ -21,5 +22,5 @@ elif choice == 2:
     comm = ai.run_comment(doc)
     print(comm)
 else:
-    a, b = ai.run_pixray(doc)
-    print(a, b)
+    keyW, path = ai.run_pixray(doc)
+    print(keyW)
