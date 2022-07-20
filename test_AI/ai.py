@@ -103,6 +103,8 @@ def get_emotion(doc):
     # print(EMOTION)
 
     return emo
+
+
 def comment_emo(emotion):
     # 감정에 따른 문구 출력
     if (emotion == 'joy'):
@@ -123,6 +125,8 @@ def comment_emo(emotion):
         emotion_comment = '오늘은 조금 지치는 하루였군요.'
 
     return emotion_comment
+
+
 def keyword_extract(doc):
     def mmr(doc_embedding, candidate_embeddings, words, top_n, diversity):
         word_doc_similarity = cosine_similarity(
@@ -169,6 +173,8 @@ def keyword_extract(doc):
     key = translator.translate(keyword[0], dest='en').text
 
     return key
+
+
 def keySentence(doc):
     komoran = Komoran()
     summarizer = KeysentenceSummarizer(
@@ -191,6 +197,8 @@ def keySentence(doc):
         keysents.append(sent+'.')
 
     return keysents
+
+
 def comment_moon(keysents):
     # KoGPT2에서 제공하는 토큰나이저 사용
     model = KoGPT2Comment()
@@ -240,11 +248,10 @@ def run_comment(doc):
 def run_pixray(doc):
     #keyW = keyword_extract(doc)
     #keyW = keyW.replace(' ','_')
-    keyW='mountain_climbing'
+    keyW = 'mountain_climbing'
     os.chdir("drawing_diary/pixray")
     sys.path.append("drawing_diary/pixray")
     subprocess.run(
-            ["python", "pixray.py", "--drawer=line_sketch", "--prompt=$keyW", "--outdir=../output"])
+        ["python", "pixray.py", "--drawer=line_sketch", "--prompt=keyW", "--outdir=../output"])
     PATH = 'drawing_diary/output/output.png'
     return keyW, PATH
-
