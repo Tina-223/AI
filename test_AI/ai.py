@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-# from typing_extensions import Self
-# from django.shortcuts import render
-# from django.views import View
-# # from .models import AI
-# from django.http import JsonResponse, HttpResponse, HttpResponseBadRequest
-
 import numpy as np
 import itertools
 import torch
@@ -246,9 +239,9 @@ def run_comment(doc):
 
 
 def run_pixray(doc):
-    #keyW = keyword_extract(doc)
-    #keyW = keyW.replace(' ','_')
-    keyW = 'mountain_climbing'
+    keyW = keyword_extract(doc)
+    keyW = keyW.replace(' ', '_')
+    # keyW = 'mountain_climbing'
     os.chdir("drawing_diary/pixray")
     sys.path.append("drawing_diary/pixray")
     subprocess.run(
