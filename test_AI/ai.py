@@ -241,6 +241,8 @@ def run_pixray(doc):
     sys.path.append("drawing_diary/pixray")
     subprocess.run(
         ["python", "pixray.py", "--drawer=line_sketch", "--prompt=%s" % (keyW), "--outdir=../output"])
+    # vq_parser.add_argument("--output", type=str, help="Output filename",
+    #                        default="output%d.png" % (rand), dest='output')     --> pixray.py 1783
     PATH = "drawing_diary/output/output%d.png" % (rand)
     return keyW, PATH
 
