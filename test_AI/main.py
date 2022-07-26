@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import ai
 
 doc = """
@@ -13,7 +12,7 @@ doc = """
 #     매일매일이 내 생일 같았으면 좋겠다.
 # """
 
-choice = int(input('1, 2, 3 골라'))
+choice = int(input('1, 2, 3, 4 골라'))
 
 if choice == 1:
     emo, comm_emo = ai.run_emotion(doc)
@@ -21,6 +20,9 @@ if choice == 1:
 elif choice == 2:
     comm = ai.run_comment(doc)
     print(comm)
+elif choice == 3:
+    a, b = ai.run_pixray(doc)
+    print(a, b)
 else:
-    keyW, path = ai.run_pixray(doc)
-    print(keyW)
+    keyw = ai.run_keyword(doc)
+    print(keyw)

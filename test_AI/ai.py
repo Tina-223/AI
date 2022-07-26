@@ -4,6 +4,7 @@ import torch
 import sys
 import os
 import subprocess
+import random
 
 from konlpy.tag import Okt, Komoran
 from sklearn.feature_extraction.text import CountVectorizer
@@ -14,8 +15,6 @@ from googletrans import Translator
 from textrank import KeysentenceSummarizer
 from pytorch_lightning.core.lightning import LightningModule
 from transformers import PreTrainedTokenizerFast, GPT2LMHeadModel
-
-# Create your views here.
 
 
 class KoGPT2Comment(LightningModule):
@@ -217,23 +216,18 @@ def comment_moon(keysents):
 
 
 ########### 수정 필요한 코드 ##########
+
 # 감정
 def run_emotion(doc):
     emotion = get_emotion(doc)
     comm_emo = comment_emo(emotion)
-    # keyS = keySentence(doc)
-    # comm_moon = comment_moon(keyS)
-    # comm = comm_emo + comm_moon
 
     return emotion, comm_emo
 
 
 def run_comment(doc):
-    # emotion = get_emotion(doc)
-    # comm_emo = comment_emo(emotion)
     keyS = keySentence(doc)
     comm_moon = comment_moon(keyS)
-    # comm = comm_emo + comm_moon
 
     return comm_moon
 
@@ -241,10 +235,16 @@ def run_comment(doc):
 def run_pixray(doc):
     keyW = keyword_extract(doc)
     keyW = keyW.replace(' ', '_')
-    # keyW = 'mountain_climbing'
+    rand = random.random()
+    rand = rand * 10000
     os.chdir("drawing_diary/pixray")
     sys.path.append("drawing_diary/pixray")
     subprocess.run(
-        ["python", "pixray.py", "--drawer=line_sketch", "--prompt=keyW", "--outdir=../output"])
-    PATH = 'drawing_diary/output/output.png'
+        ["python", "pixray.py", "--drawer=line_sketch", "--prompt=%s" % (keyW), "--outdir=../output"])
+    PATH = "drawing_diary/output/output%d.png" % (rand)
     return keyW, PATH
+
+
+def run_keyword(doc):
+    keyword = keyword_extract(doc)
+    return keyword
