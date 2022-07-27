@@ -236,7 +236,7 @@ def returnID(a):
     return a
 
 
-def run_pixray(doc, a):
+def run_pixray(doc):
     keyW = keyword_extract(doc)
     keyW = keyW.replace(' ', '_')
     os.chdir("drawing_diary/pixray")
@@ -245,7 +245,7 @@ def run_pixray(doc, a):
         ["python", "pixray.py", "--drawer=line_sketch", "--prompt=%s" % (keyW), "--outdir=../output"])
     # vq_parser.add_argument("--output", type=str, help="Output filename",
     #                        default="output%d.png" % (rand), dest='output')     --> pixray.py 1783
-    PATH = "drawing_diary/output/output%d.png" % (a)
+    PATH = "drawing_diary/output/output%d.png" % (112)
     return keyW, PATH
 
 
