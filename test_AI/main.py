@@ -12,6 +12,8 @@ doc = """
 #     매일매일이 내 생일 같았으면 좋겠다.
 # """
 
+a = 123
+
 choice = int(input('1, 2, 3, 4 골라'))
 
 if choice == 1:
@@ -24,5 +26,5 @@ elif choice == 3:
     a, b = ai.run_pixray(doc)
     print(a, b)
 else:
-    keyw = ai.run_keyword(doc)
+    keyw = ai.run_keyword(doc, a)
     print(keyw)
