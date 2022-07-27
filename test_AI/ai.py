@@ -232,6 +232,10 @@ def run_comment(doc):
     return comm_moon
 
 
+def returnID(a):
+    return a
+
+
 def run_pixray(doc, a):
     keyW = keyword_extract(doc)
     keyW = keyW.replace(' ', '_')
